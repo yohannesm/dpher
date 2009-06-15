@@ -1,0 +1,120 @@
+ 
+cs378: project #2: decipher (50 pts)
+
+Write a program to decipher an encrypted file.
+
+Input and store the encrypted text. Analyze it for the frequency with which the characters in the alphabet occur. Ignore non-alphabetic characters and case when counting. Find the letter with the maximum frequency and assume that it is the encryption of the letter e, which happens to be the most frequently occurring letter in English. The text has simply been rotated through the alphabet. Output the decrypted text.
+
+For example, if the rotation were 3, then all es would have become hs. If you were to find that h had the highest frequency in the encrypted text you would simply need to rotate all the characters backwards in the alphabet by 3. Note that the alphabet forms a circle, so that rotating a backwards by 3 gets x and is the same as rotating it forwards by 23.
+
+The encrypted text looks like gibberish. The decrypted text will be plain English. If you can't read it, you haven't decrypted it correctly.
+
+Only letters have been rotated. Numbers, punctuation, and whitespace have not. The rotation is case sensitive meaning that in the above example, h becomes e and H becomes E. But, when you're counting the letters to see which occurs most frequently, ignore non-alphabetic characters and case.
+
+You need to read and write back out all numbers, punctuation, and whitespace. You need to read, decipher, and write out all letters.
+
+The characters of the ASCII character set are represented as chars, which are a form of integer. The letters A through Z are the integers 65 through 90. The letters a through z are the integers 97 through 122. But, you really don't need to know that to test to see if a character is alphabetic or not:
+
+    if (((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z')))
+        ...
+
+You can also make use of std::is_alpha(), std::is_lower(), and std::is_upper().
+
+Note, that since a is equal to 97, you need to subtract 97 from the character before you rotate it and add 97 back after you rotate it. But, don't put 97 or any other char-equivalent integer literal into the program. Use the letter, itself, instead. For example, given a char variable named c,
+
+    rotate_char(c - 'a') + 'a'
+
+would be what you need.
+
+It is guaranteed that the input will contain only one most-frequent character, and that that character will be the rotation of the character e.
+
+It is also guaranteed that the input will be less than 5,000 characters.
+input
+
+Your program needs to respond to a command-line argument.
+
+If a command-line argument is not provided (argc == 1), your program will read its input from cin.
+
+If a command-line argument is provided (argc > 1), it will be the name of an input file and your program will read its input from that file.
+
+The command-line argument is guaranteed to be correct and there is no need for error handling. It can be extracted from the second element of argv.
+
+The input itself is also guaranteed correct and there is no need for error handling.
+output
+
+Your program will write its output to cout.
+correctness (10 pts, no partial credit and required for any other credit)
+
+Your program must produce the correct output from the provided input. Use Blackboard to reach consensus on the acceptance tests.
+
+A set of CppUnit tests is provided in TestDecipher.h. The provided tests are not guaranteed correct.
+
+Your program must pass the corrected tests. Use Blackboard to reach consensus on the corrected tests.
+additional correctness (10 pts)
+
+Pass additional acceptance tests created by the grader.
+testing (10 pts)
+
+Create a set of additional CppUnit tests in TestDecipher.h.
+
+Create a set of additional acceptance tests.
+
+You must use Valgrind and get no errors.
+design (5 pts)
+
+You must not use new or delete or malloc() or free().
+
+You must use assert() to check pre-conditions, post-conditions, argument validity, return-value validity, and invariants.
+
+Worry about this last, but your program should run as fast as possible and use as little memory as possible.
+documentation (5 pts)
+
+You must edit Decipher.txt with a plain-text editor. Do not use Word!
+
+You must use Google Project's wiki to document your program.
+
+You must use Doxygen to document interfaces:
+
+    * variables
+    * functions
+    * classes
+    * methods
+    * parameters (@param)
+    * returns (@return)
+    * exceptions (@throws)
+
+You must use C-style (/*...*/) or C++-style (//...) comments to document implementations.
+
+Follow any coding convention, but be consistent. Use good variable names. Write readable code with good indentation, blank lines, and blank spaces.
+source control (5 pts)
+
+You must use Google Project's Subversion to manage your files.
+bug tracking (5 pts)
+
+You must use Google Project's bug tracker to manage your bugs.
+submission
+
+Every individual must submit the following to Turnin:
+Type 	Name 	Description
+overview 	Decipher.txt 	Overview of the submission.
+
+Every pair must submit the following to Google Project:
+Type 	Name 	Description
+documentation 	html 	Documentation of the program,
+produced by Doxygen.
+driver 	main.c++ 	Definition of the function main().
+implementation 	Decipher.h 	Definition of functions.
+test 	TestDecipher.h 	Definition of the class TestDecipher,
+CppUnit tests.
+input 	Decipher1.in 	Input of the program,
+acceptance tests.
+Decipher2.in
+output 	Decipher1.out 	Output of the program,
+acceptance tests.
+Decipher2.out
+
+You must post the following to the *** Final Results *** thread on the class discussion board in Blackboard:
+
+    * predicted number of hours to complete
+    * actual number of hours to complete
+    * concatenation of Decipher1.out and Decipher2.out (as an attachment)
