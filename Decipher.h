@@ -14,16 +14,36 @@
 #include <cassert> // assert
 #include <cctype>  // is_alpha, is_lower, is_upper
 
+
 // ----------
 // namespaces
 // ----------
 
 namespace Decipher {
+//initialize all values to 0
+int alpha[26] = {0};
 
+ // -------------
+// max_char
+// -------------
+ 
+/**
+ * @return the most frequently occuring character in the array
+ */
+char max_char(){
+    int index = 0, max = 0;
+    for(int i=0; i < 26; i++){
+       if(alpha[i]>max){
+        max = alpha[i];
+        index = i;
+	  }
+	}
+     return (char)index + (int)'a';
+     }
 // -------------
 // max_frequency
 // -------------
-
+ 
 /**
  * O(1)    in space
  * O(n)    in time
@@ -36,8 +56,21 @@ namespace Decipher {
  */
 char max_frequency (const char* b, const char* e) {
     assert(b < e);
-    // <your code>
-    return *b;}
+    char low ; int index;
+    while (b != e){
+    	if (std::isalpha(*b)){
+    	low = std::islower(*b);
+    	index = (int)(low)-(int)'a';
+    	alpha[index]++;
+    	}
+    b++;
+    }
+    char max = max_char();
+    /*while (std::islower(*b) != max){
+    	--b;
+    }*/
+    std::cout << "WHAT IS THIS???? " << max;
+    return max;}
 
 // ------
 // rotate
@@ -57,6 +90,9 @@ char max_frequency (const char* b, const char* e) {
 void rotate (char* b, char* e, int r) {
     assert(b < e);
     // <your code>
+    
+    
     }
 
 } // Decipher
+#endif
