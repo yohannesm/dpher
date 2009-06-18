@@ -85,10 +85,21 @@ char max_frequency (const char* b, const char* e) {
  */
 void rotate (char* b, char* e, int r) {
     assert(b < e);
-    // <your code>
-    
-    
+    while(b!=e){
+    	char& c = *b;
+    	if(std::isalpha(c)){
+    	   if(std::isupper(c)){
+    	   c = c + r;
+    	     if((int)c>'Z') c = c - 26;
+    	   }
+    	   else if(std::islower(c)){
+    	   c = c + r;
+    	     if((int)c>'z') c = c - 26;
+    	   }
+    	}
+    b++;
     }
+   }
 
 } // Decipher
 #endif
