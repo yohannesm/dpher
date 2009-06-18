@@ -122,6 +122,12 @@ struct TestDecipher : CppUnit::TestFixture {
 	CPPUNIT_TEST(test_max_frequency_8);
 	CPPUNIT_TEST(test_rotate_1);
 	CPPUNIT_TEST(test_rotate_2);
+	CPPUNIT_TEST(test_rotate_3);
+	CPPUNIT_TEST(test_rotate_4);
+	CPPUNIT_TEST(test_rotate_5);
+	CPPUNIT_TEST(test_rotate_6);
+	CPPUNIT_TEST(test_rotate_7);
+	CPPUNIT_TEST(test_rotate_8);
 	CPPUNIT_TEST_SUITE_END();};
 
 #endif // TestDecipher_h
