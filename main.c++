@@ -31,7 +31,7 @@
 #include <cassert>  // assert
 #include <iostream> // cout, endl, ios_base, noskipws
 #include <fstream>  // ifstream
-#include <string>
+
 #ifdef TEST
     #include "cppunit/TestSuite.h"      // TestSuite
     #include "cppunit/TextTestRunner.h" // TestRunner
@@ -40,11 +40,11 @@
 #endif // TEST
 
 #include "Decipher.h"
-void printArray();
+
 // ----
 // main
 // ----
-static char text[5000];
+
 int main (int argc, char* argv[]) {
     using namespace std;
     using namespace Decipher;
@@ -65,41 +65,35 @@ int main (int argc, char* argv[]) {
         // -------
         // program
         // -------
-
+	static char text[5000];
         istream* p = &cin;
         ifstream in;
         if (argc > 1) {
-            in.open(argv[1]);
+            in.open(argv[1]); //opening the file from argv[1]
             assert(in);
-            in >> noskipws;
-            // must change so we write into the static char array instead
+            in >> noskipws; 
             p = &in;}
         assert(*p);
-        *p >> noskipws;
+        *p >> noskipws; //don't skip whitespaces
         assert(*p);
         // rewrite the code below
-        
         char* ind = text;
         char c;
-        while (*p >> c){
+        while (*p >> c){ //read the input either from the keyboard or the file
            // cout << c;
-        *ind = c; ++ind;
+        *ind = c; // copy the input to the text[] 
+         ++ind;
 	}
 	c = max_frequency(text, ind);
-	cout << "THIS IS C: " << c << endl; 
 	rotate(text, ind, 'e' - c);
-        char* b = text;
-        while (b < ind){
-            assert(b >= text && b < ind);
-            cout<< *(b++);
+        char* t = text;
+        //outputting the decyphered file into the standard output
+        while (t < ind){
+            assert(t >= text && t < ind);
+            cout<< *(t++);
         }
+        in.close(); //close the file
     #endif // TEST
-    in.close();
-    return 0;}
 
-void printArray(){
-	for(int i=0; i<5000; i++){
-	std::cout << text[i];
-	}
-}
+    return 0;}
 

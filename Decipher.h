@@ -27,8 +27,10 @@ namespace Decipher {
 // -------------
  
 /**
+ * @param alpha is the array that we are searching for the max
  * @return the most frequently occuring character in the array
- */
+ * it will just return 'a' if there is no alphabetical character in the text
+*/
 char max_char(int alpha[26]){
     int index = 0, max = 0;
     for(int i=0; i < 26; i++){
@@ -37,6 +39,7 @@ char max_char(int alpha[26]){
         index = i;
 	  }
 	}
+     assert(index<26 && index>=0);
      return (char)index + (int)'a';
      }
 // -------------
@@ -55,17 +58,18 @@ char max_char(int alpha[26]){
  */
 char max_frequency (const char* b, const char* e) {
     assert(b < e);
-    char temp ; int index;
-    int alpha[26] = {0};
+    char temp ; int index; 
+    int alpha[26] = {0}; // array to represent all the 26 letters of alphabet
     while (b != e){
     	if (std::isalpha(*b)){
     	temp = std::tolower(*b);
-    	index = (int)(temp)-(int)'a';
-    	alpha[index]++;
+    	index = (int)(temp)-(int)'a'; //add the count of the char into the corresponding index at the array
+    	alpha[index]++; //increment the value inside the array
     	}
-    b++;
+    b++; //move the ptr forward
     }
     char max = max_char(alpha);
+    assert(max >='a' && max <= 'z');
     return max;}
 
 // ------
@@ -84,14 +88,14 @@ char max_frequency (const char* b, const char* e) {
  * case IS significant ('a' IS NOT the same as 'A')
  */
 void rotate (char* b, char* e, int r) {
-    r = r % 26;
+    r = r % 26; //truncate r so  r < 26
     assert(b < e);
     while(b!=e){
-    	char& c = *b;
-    	if(std::isalpha(c)){
+    	char& c = *b;  // use c as an alias of b
+    	if(std::isalpha(c)){ //check if it's an alphabetical character
     	   if(std::isupper(c)){
     	   c = c + r;
-    	     if((int)c>'Z') c = c - 26;
+    	     if((int)c>'Z') c = c - 26;  //check if it's out of bound and then restore it
              else if((int)c<'A') c = c +26;
     	   }
     	   else if(std::islower(c)){
@@ -100,7 +104,7 @@ void rotate (char* b, char* e, int r) {
 	     else if((int)c<'a') c = c + 26;
     	   }
     	}
-    b++;
+    b++; //incrementing the pointer
     }
    }
 
