@@ -93,17 +93,17 @@ struct TestDecipher : CppUnit::TestFixture {
 		char      a[] = "ABC123abc&*#";
 		const int s   = std::strlen(a);
 		Decipher::rotate(a, a + s, 57);
-		CPPUNIT_ASSERT(!std::strcmp(a, "EFG123efg&*#"));}
+		CPPUNIT_ASSERT(!std::strcmp(a, "FGH123fgh&*#"));}
 	void test_rotate_7 () {
 		char      a[] = "abcdefghijklmnopqrstuvwxyz";
 		const int s   = std::strlen(a);
 		Decipher::rotate(a, a + s, 67);
-		CPPUNIT_ASSERT(!std::strcmp(a, "opqrstuvwxyzabcdefghijklmn"));}
+		CPPUNIT_ASSERT(!std::strcmp(a, "pqrstuvwxyzabcdefghijklmno"));}
 	void test_rotate_8 () {
 		char      a[] = "JKLM123uvwxy ABC";
 		const int s   = std::strlen(a);
 		Decipher::rotate(a, a + s, -62);
-		CPPUNIT_ASSERT(!std::strcmp(a, "ZABCD123klmno PQR "));}
+		CPPUNIT_ASSERT(!std::strcmp(a, "ZABC123fghij QRS"));}
 
 
 
