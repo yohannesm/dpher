@@ -69,12 +69,42 @@ struct TestDecipher : CppUnit::TestFixture {
 		const int s   = std::strlen(a);
 		Decipher::rotate(a, a + s, 1);
 		CPPUNIT_ASSERT(!std::strcmp(a, "yza"));}
-
 	void test_rotate_2 () {
 		char      a[] = "xyz";
 		const int s   = std::strlen(a);
 		Decipher::rotate(a, a + s, -1);
 		CPPUNIT_ASSERT(!std::strcmp(a, "wxy"));}
+	void test_rotate_3 () {
+		char      a[] = "xykjxcv333423z";
+		const int s   = std::strlen(a);
+		Decipher::rotate(a, a + s, 26);
+		CPPUNIT_ASSERT(!std::strcmp(a, "xykjxcv333423z"));}
+	void test_rotate_4 () {
+		char      a[] = "xsld+_(^(	kfiessfyz";
+		const int s   = std::strlen(a);
+		Decipher::rotate(a, a + s, -26);
+		CPPUNIT_ASSERT(!std::strcmp(a, "xsld+_(^(	kfiessfyz"));}
+	void test_rotate_5 () {
+		char      a[] = "12312984  2342039";
+		const int s   = std::strlen(a);
+		Decipher::rotate(a, a + s, 1);
+		CPPUNIT_ASSERT(!std::strcmp(a, "12312984  2342039"));}
+	void test_rotate_6 () {
+		char      a[] = "ABC123abc&*#";
+		const int s   = std::strlen(a);
+		Decipher::rotate(a, a + s, 57);
+		CPPUNIT_ASSERT(!std::strcmp(a, "EFG123efg&*#"));}
+	void test_rotate_7 () {
+		char      a[] = "abcdefghijklmnopqrstuvwxyz";
+		const int s   = std::strlen(a);
+		Decipher::rotate(a, a + s, 67);
+		CPPUNIT_ASSERT(!std::strcmp(a, "opqrstuvwxyzabcdefghijklmn"));}
+	void test_rotate_8 () {
+		char      a[] = "JKLM123uvwxy ABC";
+		const int s   = std::strlen(a);
+		Decipher::rotate(a, a + s, -62);
+		CPPUNIT_ASSERT(!std::strcmp(a, "ZABCD123klmno PQR "));}
+
 
 
 	// -----
