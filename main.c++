@@ -31,7 +31,7 @@
 #include <cassert>  // assert
 #include <iostream> // cout, endl, ios_base, noskipws
 #include <fstream>  // ifstream
-
+#include <string>
 #ifdef TEST
     #include "cppunit/TestSuite.h"      // TestSuite
     #include "cppunit/TextTestRunner.h" // TestRunner
@@ -70,7 +70,19 @@ int main (int argc, char* argv[]) {
 
         ifstream in;
         if (argc > 1) {
-            // <your code>
+            string filename = argv[1];
+            in.open(argv[1]);
+            assert(in);
+            in >> noskipws;
+            char c;
+            // must change so we write into the static char array instead
+            while(in >> c)
+               cout << c;
+            
+            in.clear();
+            assert(in);
+            in.seekg(0);
+            in.close();
             p = &in;}
 
         assert(*p);
