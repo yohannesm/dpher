@@ -20,8 +20,7 @@
 // ----------
 
 namespace Decipher {
-//initialize all values to 0
-int alpha[26] = {0};
+
 
  // -------------
 // max_char
@@ -30,7 +29,7 @@ int alpha[26] = {0};
 /**
  * @return the most frequently occuring character in the array
  */
-char max_char(){
+char max_char(int alpha[26]){
     int index = 0, max = 0;
     for(int i=0; i < 26; i++){
        if(alpha[i]>max){
@@ -57,6 +56,7 @@ char max_char(){
 char max_frequency (const char* b, const char* e) {
     assert(b < e);
     char temp ; int index;
+    int alpha[26] = {0};
     while (b != e){
     	if (std::isalpha(*b)){
     	temp = std::tolower(*b);
@@ -65,7 +65,7 @@ char max_frequency (const char* b, const char* e) {
     	}
     b++;
     }
-    char max = max_char();
+    char max = max_char(alpha);
     return max;}
 
 // ------
