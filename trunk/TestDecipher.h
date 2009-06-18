@@ -105,6 +105,27 @@ struct TestDecipher : CppUnit::TestFixture {
 		Decipher::rotate(a, a + s, -52);
 		CPPUNIT_ASSERT(!std::strcmp(a, "JKLM123uvwxy ABC"));}
 
+	// -----
+	// max_char
+	// -----	
+	void max_char_1(){
+		int test[] = {234, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+		CPPUNIT_ASSERT(Decipher::max_char(test) == 'a');}
+	void max_char_2(){
+		int test[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 234, 1, 1, 1, 1, 1, 1, 1, 1, 1, 233, 1, 1, 1, 1, 1, 1};
+		CPPUNIT_ASSERT(Decipher::max_char(test) == 'j');}
+	void max_char_3(){
+		int test[] = {1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+		CPPUNIT_ASSERT(Decipher::max_char(test) == 'b');}
+	void max_char_4(){
+		int test[] = {234, 1, 1, 1, 1, 1, 1, 1, 555, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
+		CPPUNIT_ASSERT(Decipher::max_char(test) == 'i');}
+	void max_char_5(){
+		int test[] = {234, 1, 1, 1, 1, 1, 1, 1, 2343, 1, 1, 1, 1, 1, 1, 1, 1, 6, 1, 1, 1, 1, 1, 1, 1, 1};
+		CPPUNIT_ASSERT(Decipher::max_char(test) == 'i');}
+	void max_char_6(){
+		int test[] = {3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 155, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 762, 1};
+		CPPUNIT_ASSERT(Decipher::max_char(test) == 'y');}
 
 
 	// -----
@@ -128,6 +149,12 @@ struct TestDecipher : CppUnit::TestFixture {
 	CPPUNIT_TEST(test_rotate_6);
 	CPPUNIT_TEST(test_rotate_7);
 	CPPUNIT_TEST(test_rotate_8);
+	CPPUNIT_TEST(max_char_1);
+	CPPUNIT_TEST(max_char_2);
+	CPPUNIT_TEST(max_char_3);
+	CPPUNIT_TEST(max_char_4);
+	CPPUNIT_TEST(max_char_5);
+	CPPUNIT_TEST(max_char_6);
 	CPPUNIT_TEST_SUITE_END();};
 
 #endif // TestDecipher_h
