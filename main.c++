@@ -40,11 +40,11 @@
 #endif // TEST
 
 #include "Decipher.h"
-
+void printArray();
 // ----
 // main
 // ----
-
+static char text[5000];
 int main (int argc, char* argv[]) {
     using namespace std;
     using namespace Decipher;
@@ -67,33 +67,39 @@ int main (int argc, char* argv[]) {
         // -------
 
         istream* p = &cin;
-
         ifstream in;
         if (argc > 1) {
-            string filename = argv[1];
             in.open(argv[1]);
             assert(in);
             in >> noskipws;
-            char c;
             // must change so we write into the static char array instead
-            while(in >> c)
-               cout << c;
-            
-            in.clear();
-            assert(in);
-            in.seekg(0);
-            in.close();
             p = &in;}
-
         assert(*p);
         *p >> noskipws;
         assert(*p);
-
         // rewrite the code below
+        
+        char* ind = text;
         char c;
-        while (*p >> c)
-            cout << c;
+        while (*p >> c){
+           // cout << c;
+        *ind = c; ++ind;
+	}
+	c = max_frequency(text, ind);
+	cout << "THIS IS C: " << c << endl; 
+	rotate(text, ind, 'e' - c);
+        char* b = text;
+        while (b < ind){
+            assert(b >= text && b < ind);
+            cout<< *(b++);
+        }
     #endif // TEST
-
+    in.close();
     return 0;}
+
+void printArray(){
+	for(int i=0; i<5000; i++){
+	std::cout << text[i];
+	}
+}
 
