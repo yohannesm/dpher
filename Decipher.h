@@ -56,20 +56,16 @@ char max_char(){
  */
 char max_frequency (const char* b, const char* e) {
     assert(b < e);
-    char low ; int index;
+    char temp ; int index;
     while (b != e){
     	if (std::isalpha(*b)){
-    	low = std::islower(*b);
-    	index = (int)(low)-(int)'a';
+    	temp = std::tolower(*b);
+    	index = (int)(temp)-(int)'a';
     	alpha[index]++;
     	}
     b++;
     }
     char max = max_char();
-    /*while (std::islower(*b) != max){
-    	--b;
-    }*/
-    std::cout << "WHAT IS THIS???? " << max;
     return max;}
 
 // ------
