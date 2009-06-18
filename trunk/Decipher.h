@@ -84,6 +84,7 @@ char max_frequency (const char* b, const char* e) {
  * case IS significant ('a' IS NOT the same as 'A')
  */
 void rotate (char* b, char* e, int r) {
+    r = r % 26;
     assert(b < e);
     while(b!=e){
     	char& c = *b;
@@ -91,10 +92,12 @@ void rotate (char* b, char* e, int r) {
     	   if(std::isupper(c)){
     	   c = c + r;
     	     if((int)c>'Z') c = c - 26;
+             else if((int)c<'A') c = c +26;
     	   }
     	   else if(std::islower(c)){
     	   c = c + r;
     	     if((int)c>'z') c = c - 26;
+	     else if((int)c<'a') c = c + 26;
     	   }
     	}
     b++;
