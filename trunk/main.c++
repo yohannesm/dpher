@@ -77,19 +77,19 @@ int main (int argc, char* argv[]) {
         *p >> noskipws; //don't skip whitespaces
         assert(*p);
         // rewrite the code below
-        char* ind = text;
+        char* iter = text;
         char c;
         while (*p >> c){ //read the input either from the keyboard or the file
            // cout << c;
-        *ind = c; // copy the input to the text[] 
-         ++ind;
-	}
-	c = max_frequency(text, ind);
-	rotate(text, ind, 'e' - c);
+        *iter = c; // copy the input to the text[] 
+         ++iter;
+	}// iter now pts to the end of the text file
+	c = max_frequency(text, iter);
+	rotate(text, iter, 'e' - c);
         char* t = text;
         //outputting the decyphered file into the standard output
-        while (t < ind){
-            assert(t >= text && t < ind);
+        while (t < iter){
+            assert(t >= text && t < iter);
             cout<< *(t++);
         }
         in.close(); //close the file
