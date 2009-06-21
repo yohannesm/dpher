@@ -8,7 +8,7 @@ Our second programming assignment was to decipher two encrypted files whose char
 
 ==Input==
 
-If the command line argument was greater than 1, we knew to read in the characters from a text file, with the name of the file being the first argument.  Otherwise, the input is read from cin.  We made a char array of length 5000 to store the unaltered copy of the text file or the input from the cin. Because it's impossible to go through the keyboard input twice, that is why we store it in an array as the user typing in all the words.  We later used traversed the char array to rotate all the alpha characters by the offset. 
+If the command line argument was greater than 1, we knew to read in the characters from a text file, with the name of the file being the first argument.  Otherwise, the input is read from cin.  We made a char array of length 5000 to store the unaltered copy of the text file or the input from the cin. Because it's impossible to go through the keyboard input twice, that is why we store it in an array as the user typing in all the words.  We later used traversed the char array to rotate all the alpha characters by the offset. We think it is necessary to sotre the input in the temporary array anyway even if we just have the input from the text file because I/O is really slow compared to the C++ program itself. 
 
 ==Computing the most frequently occurring character==
 
