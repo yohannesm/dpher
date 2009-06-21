@@ -8,7 +8,7 @@ Our second programming assignment was to decipher two encrypted files whose char
 
 ==Input==
 
-If the command line argument was greater than 1, we knew to read in the characters from a text file, with the name of the file being the first argument.  Otherwise, the input is read from cin.  We made a char array of length 5000 to store the unaltered copy of the text file.  We later used traversed the char array to rotate all the alpha characters by the offset. 
+If the command line argument was greater than 1, we knew to read in the characters from a text file, with the name of the file being the first argument.  Otherwise, the input is read from cin.  We made a char array of length 5000 to store the unaltered copy of the text file or the input from the cin. Because it's impossible to go through the keyboard input twice, that is why we store it in an array as the user typing in all the words.  We later used traversed the char array to rotate all the alpha characters by the offset. 
 
 ==Computing the most frequently occurring character==
 
@@ -16,11 +16,9 @@ To compute the most frequently occurring character in the file, we declared an i
 
 ==Rotation of the text==
 
-The rotation of the text was case sensitive, unlike computing the most frequently occurring character.  However, only alpha characters were rotated, thus leaving alone numbers, symbols, and whitespace.  We also used the modulus operator to guarantee that the rotation would not be out of bounds.    
+The rotation of the text was case sensitive, unlike computing the most frequently occurring character.  However, only alpha characters were rotated, thus leaving alone numbers, symbols, and whitespaces.  We also  guarantee that the rotation would not be out of bounds.    
    
 ==Output==
-Since our program used a pointer to access the characters in the char array, we dereferenced the pointer when outputting the rotated characters to the output file while incrementing it at each step.
+The output will be the deciphered text file into the monitor(cout/standard output). Since our program used a pointer to access the characters in the char array, we dereference the pointer when outputting the rotated characters to the output file while incrementing it at each step.
 
 Through this assignment, we have learned about the operations that can be done on a pointer and I/O from an input file versus cin.     
-
-
